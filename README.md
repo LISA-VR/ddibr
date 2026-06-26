@@ -134,6 +134,12 @@ nerfbaselines install-method --method [gaussian-splatting|2d-gaussian-splatting|
 We recommend installing methods inside an Apptainer container for reproducibility.
 Our &#8706;DIBR method also works in a standard conda environment.
 
+> [!WARNING]
+If you installed `mamba` instead of `conda`, please do not use the `apptainer` backend, use rather the `conda` backend. Or install `conda`.
+
+> [!WARNING]
+If you want to use this code on a HPC, please try to remove some bindings from [nerfbaselines/backend/_apptainer.py](https://github.com/ArmandLfd/nerfbaselines/blob/main/nerfbaselines/backends/_apptainer.py).
+
 Once completed, you can test the installation:
 
 ```bash
