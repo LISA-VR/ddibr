@@ -12,14 +12,13 @@
     <a href="https://orcid.org/0000-0001-6502-5354">Daniele Bonatto</a>
   </p>
   <h3 align="center">ECCV 2026 Poster</h3>
-  <h3 align="center"><a href="https://arxiv.org/abs/2403.14627">Paper</a> | <a href="https://donydchen.github.io/mvsplat/">Project Page</a> 
-<!-- 
-  </h3>
-  <ul>
-  <li><b href="https://github.com/donydchen/mvsplat360">Update:</b> Fix, etc.</li>
-  <li><b href="https://github.com/donydchen/mvsplat360">Original Implementation</b></li> 
-  </ul>
--->
+  <h3 align="center"><a href="https://arxiv.org/abs/2403.14627">Paper</a> | <a href="https://donydchen.github.io/mvsplat/">Project Page</a></h3>
+    <!-- 
+    <ul>
+    <li><b href="https://github.com/donydchen/mvsplat360">Update:</b> Fix, etc.</li>
+    <li><b href="https://github.com/donydchen/mvsplat360">Original Implementation</b></li> 
+    </ul>
+    -->
 </p>
 
 ---
@@ -30,7 +29,7 @@
 @inbook{diffdibr_eccv_2026,
   title={$\partial$DIBR: Differentiable Depth Image-based Rendering for Fast Novel View Synthesis},
   author={Losfeld, Armand and Dury, Sarah and Lafruit, Gauthier and Teratani, Mehrdad and Bonatto, Daniele},
-  booktitle={Computer Vision – ECCV 2024}, 
+  booktitle={Computer Vision – ECCV 2026}, 
   publisher={Springer Nature}, 
   year={2026},
 }
@@ -67,8 +66,8 @@
   * [10.2 Delete Nerfbaselines folder](#102-delete-nerfbaselines-folder)
   * [10.3 Optional: Cleaning conda cache](#103-optional--cleaning-conda-cache)
 - [Acknowledgments](#acknowledgments)
-- [12. License](#12-license)
-- [13. Dataset Licenses](#13-dataset-licenses)
+- [License](#license)
+- [Dataset Licenses](#dataset-licenses)
 
 ---
 
@@ -145,11 +144,11 @@ On the first run, the tool downloads:
 - Required datasets
 - LPIPS pretrained weights
 
-> [!WARNING] Warning (image pull permissions)
-Some systems restrict image pulls to privileged users. See: [https://github.com/AndreWeiner/ml-cfd-lecture/issues/36](https://github.com/AndreWeiner/ml-cfd-lecture/issues/36).
+> [!WARNING] 
+**Image pull permissions**: Some systems restrict image pulls to privileged users. See: [https://github.com/AndreWeiner/ml-cfd-lecture/issues/36](https://github.com/AndreWeiner/ml-cfd-lecture/issues/36).
 
-> [!NOTE] Note (Vulkan GPU selection)
-Install `vulkan-tools` and run `vkinfo` to verify the active GPU.
+> [!NOTE]
+**Vulkan GPU selection**: Install `vulkan-tools` and run `vkinfo` to verify the active GPU.
 If the system selects an integrated GPU, remove MESA Vulkan drivers and reinstall NVIDIA Vulkan drivers.
 
 ---
@@ -186,8 +185,8 @@ To run a training/optimization with the default parameters of any method:
 nerfbaselines train --method [gaussian-splatting|2d-gaussian-splatting|triangle-splatting|diff-dibr] --backend [conda|apptainer] --data ~/.cache/nerfbaselines/datasets/${DATASET_NAME}/${SCENE_NAME} --output ${OUTPUT}
 ```
 
-> [!NOTE] &#8706;DIBR: Vulkan Assert failure
- Our code can crash with this error: "vulkan Assert failure". Please first check that you have a correct installation of your GPU drivers and Vulkan installation. If the error persists, check if your GPU has enough memory (for full image resolution, at least 24GB of memory). If not, you can use `--set scale_factor=${FACTOR}` to rescale images and reduce GPU memory (e.g., `$FACTOR = 0.5`). 
+> [!NOTE]
+ **Vulkan Assert failure**: Our code can crash with this error: "vulkan Assert failure". Please first check that you have a correct installation of your GPU drivers and Vulkan installation. If the error persists, check if your GPU has enough memory (for full image resolution, at least 24GB of memory). If not, you can use `--set scale_factor=${FACTOR}` to rescale images and reduce GPU memory (e.g., `$FACTOR = 0.5`). 
 
 ### 5.2 Our Coarse-to-Fine Optimization
 
