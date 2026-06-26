@@ -17,4 +17,4 @@ Data/ckpt_example
 tmp
 .nojekyll
 
-!pages/index.html
+!index.html
