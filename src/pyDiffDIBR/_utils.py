@@ -2310,7 +2310,7 @@ Contact:
         self.log_level  = log_level
         self.start_t    = datetime.datetime.now()
 
-        self.debug(self._ASCII_ART + "\n" + self._LICENSE_MSG)
+        self._log(LogType.INFO , self._ASCII_ART + "\n" + self._LICENSE_MSG, PrintColors.OKBLUE)
     
     def _log(self, log_type : LogType, msg : str, log_color : PrintColors = PrintColors.ENDC):
         """Logs timing, the log type, and the message if the log type statisfied the log level.
