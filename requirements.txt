@@ -1,0 +1,9 @@
+yuvio==1.4.1
+typing_extensions==4.13.2
+SciencePlots==2.1.1
+scikit-image==0.25.2
+scipy==1.16.3
+slangpy==0.37.0
+matplotlib==3.10.3
+numpy==1.26.4
+fast-simplification==0.1.13

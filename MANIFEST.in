@@ -1,0 +1,2 @@
+recursive-include src/pyDiffDIBR/shaders *
+recursive-include src/pyDiffDIBR/toml_files *

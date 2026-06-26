@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "pyDiffDIBR"
+version = "1.0.0"
+authors = [
+    {name = "Armand Losfeld", email = "armand.lfd.pro@proton.me"},
+    {name = "Sarah Dury", email = "sarah.dury@ulb.be"},
+    {name = "Gauthier Lafruit", email = "gauthier.lafruit@ulb.be"},
+    {name = "Mehrdad Teratani", email = "teratani.mehrdad@f.mail.nagoya-u.ac.jp"},
+    {name = "Daniele Bonatto", email = "daniele.bonatto@ulb.be"},
+]
+keywords = ["differentiable rendering", "dibr", "novel view synthesis"]
+description = "&#8706;DIBR: a Differentiable Depth Image-based Renderer"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["slangpy==0.37.0", "numpy>=1.26.0", "opencv-python"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "AGPL-3.0-or-later"
+license-files = ["LICEN[CS]E*"]
