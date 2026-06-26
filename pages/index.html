@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="&#8706;DIBR - Armand Losfeld">
+  <meta name="description" content="We propose a differentiable framework for Depth Image‑Based Rendering (DIBR) using triangle primitives. Our method integrates seamlessly into traditional CG pipelines while remaining fully optimizable within modern NVS frameworks. Moreover, our primitives ensure geometric consistency and connectivity.">
+  <meta name="keywords" content="Differentiable Rendering, Depth Image based rendering, DIBR, novel view synthesis, slang, computer vision, AI">
+  <meta name="author" content="Armand Losfeld, Sarah Dury, Gauthier Lafruit, Mehrdad Teratani, Daniele Bonatto">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Laboratory of Image Synthesis and Analysis">
+  <meta property="og:title" content="&#8706;DIBR: Differentiable Depth Image-based Rendering for Fast Novel View Synthesis">
+  <meta property="og:description" content="We propose a differentiable framework for Depth Image‑Based Rendering (DIBR) using triangle primitives. Our method integrates seamlessly into traditional CG pipelines while remaining fully optimizable within modern NVS frameworks. Moreover, our primitives ensure geometric consistency and connectivity. ">
+  <meta property="og:url" content="https://github.com/ArmandLfd/ddibr"> <!-- TODO -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png"> <!-- TODO -->
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Differentiable Depth Image-based Rendering for Fast Novel View Synthesis - Research Preview">
+  <meta property="article:published_time" content="2026-06-26T00:00:00.000Z">
+  <meta property="article:author" content="Armand Losfeld">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="Differentiable Rendering">
+  <meta property="article:tag" content="Triangle Primitives">
+  <meta property="article:tag" content="Depth Image based rendering">
+  <meta property="article:tag" content="DIBR">
+  <meta property="article:tag" content="novel view synthesis">
+  <meta property="article:tag" content="slang">
+  <meta property="article:tag" content="computer vision">
+
+  <!-- Twitter -->
+<!-- <meta name="twitter:card" content="summary_large_image"> --> 
+<!-- <!-- TODO: Replace with your lab/institution Twitter handle --> 
+<!-- <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE"> -->
+<!-- <!-- TODO: Replace with first author's Twitter handle --> 
+<!-- <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE"> -->
+<!-- <!-- TODO: Same as paper title above --> 
+<!-- <meta name="twitter:title" content="PAPER_TITLE"> -->
+<!-- <!-- TODO: Same as description above --> 
+<!-- <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS"> -->
+<!-- <!-- TODO: Same as social preview image above --> 
+<!-- <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png"> -->
+<!-- <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview"> -->
+    
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="&#8706;DIBR: Differentiable Depth Image-based Rendering for Fast Novel View Synthesis">
+  <meta name="citation_author" content="Losfeld, Armand">
+  <meta name="citation_author" content="Dury, Sarah">
+  <meta name="citation_author" content="Lafruit, Gauthier">
+  <meta name="citation_author" content="Teratani, Mehrdad">
+  <meta name="citation_author" content="Bonatto, Daniele">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="ECCV 2026">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf"> <!-- TODO -->
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <title>&#8706;DIBR - Armand Losfeld | Academic Research</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/png" href="static/images/favicon-ulb.png">
+  <link rel="apple-touch-icon" href="static/images/favicon-ulb.png">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <!-- TODO: check info -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "&#8706;DIBR: Differentiable Depth Image-based Rendering for Fast Novel View Synthesis",
+    "description": "We propose a differentiable framework for Depth Image‑Based Rendering (DIBR) using triangle primitives. Our method integrates seamlessly into traditional CG pipelines while remaining fully optimizable within modern NVS frameworks. Moreover, our primitives ensure geometric consistency and connectivity.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Armand Losfeld",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Laboratory of Image Synthesis and Analysis (LISA), Université Libre de Bruxelles (ULB)"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Sarah Dury ",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Laboratory of Image Synthesis and Analysis (LISA), Université Libre de Bruxelles (ULB)"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Gauthier Lafruit",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Laboratory of Image Synthesis and Analysis (LISA), Université Libre de Bruxelles (ULB)"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Mehrdad Teratani",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Laboratory of Image Synthesis and Analysis (LISA), Université Libre de Bruxelles (ULB); Fujii Laboratory, Nagoya University"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Daniele Bonatto",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Laboratory of Image Synthesis and Analysis (LISA), Université Libre de Bruxelles (ULB)"
+        }
+      },
+    ],
+    "datePublished": "2026-06-27",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ECCV"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE", 
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": [
+      "Differentiable Rendering",
+      "Depth Image based rendering",
+      "DIBR",
+      "novel view synthesis",
+      "triangle primitives",
+      "slang",
+      "computer vision",
+    ],
+    "abstract": "Modern Novel View Synthesis (NVS), such as 3D Gaussian Splatting (3DGS), introduces scene representations based on new parametrized primitives. These primitives are optimized through inverse-rendering optimization from color gradients, possibly with a depth prior. However, they fail to preserve geometric consistency and connectivity of the scene during the training phase. Furthermore, standard computer graphics (CG) pipelines do not easily handle these new primitives, thereby limiting rendering performance and integration into consumer applications. We propose a differentiable framework for Depth Image‑Based Rendering (DIBR) using triangle primitives. Our method integrates seamlessly into traditional CG pipelines while remaining fully optimizable within modern NVS frameworks. Moreover, our primitives ensure geometric consistency and connectivity. Colors and depths are jointly optimized following a coarse-to-fine strategy. We compare our renderer to 3DGS, 2DGS, and Triangle Splatting across two forward‑facing datasets. Although our approach yields slightly lower NVS quality (up to -3 dB), it achieves a 2x speed‑up in rendering time (277 FPS) on a consumer-grade GPU, demonstrating its suitability for real‑time or resource‑constrained applications. ",
+    "citation": "@inbook{diffdibr_eccv_2026,title={$\partial$DIBR: Differentiable Depth Image-based Rendering for Fast Novel View Synthesis}\nauthor={Losfeld, Armand and Dury, Sarah and Lafruit, Gauthier and Teratani, Mehrdad and Bonatto, Daniele}\nbooktitle={Computer Vision – ECCV 2024},\npublisher={Springer Nature},\nyear={2026},\n}",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "Differentiable Rendering"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Novel View Synthesis"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Triangle Primitives"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Computer Vision"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <!-- TODO domain + lab github -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Laboratory of Image Synthesis and Analysis (LISA), Université Libre de Bruxelles (ULB)",
+    "url": "https://lisa.polytech.ulb.be/",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://github.com/ArmandLfd",
+      "https://gitlab.ulb.be/lisa",
+      "https://gitlab.ulb.be/lisa/vr",
+    ]
+  }
+  </script>
+
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <!-- TODO: Replace with your lab's related works -->
+        <a href="https://ieeexplore.ieee.org/document/11489163" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Failing to Reflect Reality: Gaussian Splatting’s Collapse on Non-Lambertian Surfaces</h5>
+            <p>We demonstrate that highly non-Lambertian objects, such as glass or mirrors, remain impossible to correctly reconstruct and render with Gaussian primitives and spherical harmonics.</p>
+            <span class="work-venue">IEEE Open Journal of Signal Processing (ICIP 2026)</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://ieeexplore.ieee.org/document/11086388" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Micro-Image Domain View Synthesizer for Free Navigation with Focused Plenoptic Cameras</h5>
+            <p>We present a novel, first-of-its-kind view synthesis method for plenoptic images, which enables the direct manipulation of images in the micro-images array format, thereby bypassing intermediate transformation steps.</p>
+            <span class="work-venue">IEEE Transactions on Multimedia 2025</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Structure-from-motion in micro-image domain for uncalibrated plenoptic 2.0 cameras</h5>
+            <p>We introduce a structure-from-motion method specifically designed to process the raw micro-images captured by plenoptic 2.0 cameras.</p>
+            <span class="work-venue"> International Journal of Computer Vision 2026</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">&#8706;DIBR: Differentiable Depth Image-based Rendering for Fast Novel View Synthesis</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://orcid.org/0000-0001-6923-3206" target="_blank">Armand Losfeld</a><sup>&dagger;</sup>,</span>
+                <span class="author-block">
+                  <a href="https://orcid.org/0000-0003-1667-8177" target="_blank">Sarah Dury</a><sup>&dagger;</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://orcid.org/0000-0002-2349-1936K" target="_blank">Gauthier Lafruit</a><sup>&dagger;</sup>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://orcid.org/0000-0001-9332-1409" target="_blank">Mehrdad Teratani</a><sup>&dagger;*</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://orcid.org/0000-0001-6502-5354" target="_blank">Daniele Bonatto</a><sup>&dagger;</sup></span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <!-- TODO: Replace with your institution and conference/journal info -->
+                    <span class="author-block">&dagger; Laboratory of Image Synthesis and Analysis (LISA), Université Libre de Bruxelles (ULB)
+                        <br>* Fujii Laboratory, Nagoya University
+                        <br>ECCV 2026</span>
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+                  </div>
+
+                  <!-- TODO: add difuion link to MOBILE pdf format-->
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+                    
+                    <span class="link-block">
+                      <a href="static/pdfs/suppl-mat.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span>
+
+                  <!-- TODO: Replace with your GitHub repository URL -->
+                  <span class="link-block">
+                    <a href="https://github.com/ArmandLfd/ddibr" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- 
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                  -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- TODO: Replace with your teaser video -->
+      
+      <video poster="" id="tree" autoplay controls muted loop width="49%" preload="metadata" style="float: left top;">
+        <source src="static/videos/ddibr_rendering_tools.webm" type="video/mp4">
+      </video>
+      <video poster="" id="tree" autoplay controls muted loop width="49%" preload="metadata" style="float: right top;">
+        <source src="static/videos/ddibr_drendering_tools.webm" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+              Modern Novel View Synthesis (NVS), such as 3D Gaussian Splatting (3DGS), introduces scene representations based on new parametrized primitives. These primitives are optimized through inverse-rendering optimization from color gradients, possibly with a depth prior. However, they fail to preserve geometric consistency and connectivity of the scene during the training phase. Furthermore, standard computer graphics (CG) pipelines do not easily handle these new primitives, thereby limiting rendering performance and integration into consumer applications. We propose a differentiable framework for Depth Image‑Based Rendering (DIBR) using triangle primitives. Our method integrates seamlessly into traditional CG pipelines while remaining fully optimizable within modern NVS frameworks. Moreover, our primitives ensure geometric consistency and connectivity. Colors and depths are jointly optimized following a coarse-to-fine strategy. We compare our renderer to 3DGS, 2DGS, and Triangle Splatting across two forward‑facing datasets. Although our approach yields slightly lower NVS quality (up to -3 dB), it achieves a 2x speed‑up in rendering time (277 FPS) on a consumer-grade GPU, demonstrating its suitability for real‑time or resource‑constrained applications.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+        <h2 class="title is-3" style="text-align: center;">&#8706;DIBR’s differentiable pipeline</h2>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <p style="text-align: left; margin-bottom: 1cm;">
+                (a) From a dataset \(\mathcal{D}\), \(|\mathcal{S}|\) views are selected to represent the scene. (b) A depth map is initialized for each view. (c) &#8706;DIBR selects \(|\mathcal{I}|\) input views from \(\mathcal{S}\). (d) The input images are warped and blended based on a quality map. During training, the photometric loss (e) is back-propagated. A coarse-to-fine scheme guides the depth optimization.
+            </p>
+            <img src="static/images/fig-pipelineV10-tiny.png" alt="&#8706;DIBR’s differentiable pipeline for fast geometrically consistent NVS" loading="lazy"/>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+        <h2 class="title is-3" style="text-align: center;">Implementation of Differentiable Rendering</h2>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <b  style="text-align: center; margin-bottom: 1cm; font-size: 17pt!important;">
+            Hard discontinuities arising during rendering are replaced by smooth surrogates. 
+            </b>
+            <p style="text-align: left; margin-bottom: 1cm;">
+                <br>
+                <b style="font-size: 15pt!important;">1. Rasterization and Depth test</b>
+                <br>
+                Approximation techniques for non-differentiable rendering steps. Left: rasterization and depth testing impose hard non-differentiable decisions. Right: multi-sampling is used to provide smooth sampling.
+            </p>
+            <img src="static/images/hard-smooth-v2.png" alt="Hard Sampling vs. Smooth sampling" loading="lazy"/>
+            <p style="text-align: left; margin-bottom: 1cm;">
+                <br>
+                <b style="font-size: 15pt!important;">2. Vertex discarding based on disoccluion test</b>
+                <br>
+                Reformulating disocclusions as a probability based on differentiable computable properties (e.g., triangle elongation) and use of a sigmoid for smooth discarding. More details on page 8.
+            </p>
+            <img src="static/images/diff-quality.png" alt="Replacing hard vertex discarding by a differentiable surrogate." loading="lazy"/>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+        <h2 class="title is-3" style="text-align: center;">Visual Comparison</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+            <img src="static/images/color-caroussel-seasoning.png" alt="Third research result visualization" loading="lazy"/>
+            <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+                GT 3DGS &#8706;DIBR
+            </h2>
+            <h2 class="subtitle has-text-centered">
+                Shiny - Seasoning
+        </h2>
+      </div>
+      <div class="item">
+           <img src="static/images/cd.png" alt="Third research result visualization" loading="lazy"/>
+           <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+               GT 3DGS &#8706;DIBR
+           </h2>
+           <h2 class="subtitle has-text-centered">
+               Shiny - CD
+       </h2>
+     </div>
+     <div class="item">
+          <img src="static/images/giants.png" alt="Third research result visualization" loading="lazy"/>
+          <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+              GT 3DGS &#8706;DIBR
+          </h2>
+          <h2 class="subtitle has-text-centered">
+              Shiny - Giants
+      </h2>
+    </div>
+     <div class="item">
+          <img src="static/images/pasta.png" alt="Third research result visualization" loading="lazy"/>
+          <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+              GT 3DGS &#8706;DIBR
+          </h2>
+          <h2 class="subtitle has-text-centered">
+              Shiny - Pasta
+      </h2>
+    </div>
+    <div class="item">
+         <img src="static/images/food.png" alt="Third research result visualization" loading="lazy"/>
+         <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+             GT 3DGS &#8706;DIBR
+         </h2>
+         <h2 class="subtitle has-text-centered">
+             Shiny - Food
+     </h2>
+   </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/color-caroussel-tools.png" alt="Third research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+            GT 3DGS &#8706;DIBR
+        </h2>
+        <h2 class="subtitle has-text-centered">
+            Shiny - Tools
+       </h2>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static/images/color-caroussel-lab.png" alt="Third research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+            GT 3DGS &#8706;DIBR
+        </h2>
+        <h2 class="subtitle has-text-centered">
+            Shiny - Lab
+       </h2>
+     </div>
+  </div>
+
+  <div id="results-carousel" class="carousel results-carousel">
+   <div class="item">
+    <!-- TODO: Replace with your research result images -->
+    <img src="static/images/dseasoning.png" alt="Third research result visualization" loading="lazy"/>
+    <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+        GT 3DGS &#8706;DIBR
+    </h2>
+    <h2 class="subtitle has-text-centered">
+        Shiny - Seasoning
+        <br>
+        Depth failures are illustrated by the red arrows.
+   </h2>
+  </div>
+  <div class="item">
+    <!-- Your image here -->
+    <img src="static/images/dlab.png" alt="Third research result visualization" loading="lazy"/>
+    <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+        GT 3DGS &#8706;DIBR
+    </h2>
+    <h2 class="subtitle has-text-centered">
+        Shiny - Lab<br>
+        Depth failures are illustrated by the red arrows.
+   </h2>
+  </div>
+  <div class="item">
+    <!-- Your image here -->
+    <img src="static/images/dcd.png" alt="Third research result visualization" loading="lazy"/>
+    <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+        GT 3DGS &#8706;DIBR
+    </h2>
+    <h2 class="subtitle has-text-centered">
+        Shiny - CD<br>
+        Depth failures are illustrated by the red arrows.
+   </h2>
+  </div>
+  <div class="item">
+    <!-- Your image here -->
+    <img src="static/images/dfood.png" alt="Third research result visualization" loading="lazy"/>
+    <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+        GT 3DGS &#8706;DIBR
+    </h2>
+    <h2 class="subtitle has-text-centered">
+        Shiny - Food<br>
+        Depth failures are illustrated by the red arrows.
+   </h2>
+  </div>
+  <div class="item">
+    <!-- Your image here -->
+    <img src="static/images/dgiants.png" alt="Third research result visualization" loading="lazy"/>
+    <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+        GT 3DGS &#8706;DIBR
+    </h2>
+    <h2 class="subtitle has-text-centered">
+        Shiny - Giants<br>
+        Depth failures are illustrated by the red arrows.
+   </h2>
+  </div>
+  <div class="item">
+    <!-- Your image here -->
+    <img src="static/images/dpasta.png" alt="Third research result visualization" loading="lazy"/>
+    <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
+        GT 3DGS &#8706;DIBR
+    </h2>
+    <h2 class="subtitle has-text-centered">
+        Shiny - Pasta<br>
+        Depth failures are illustrated by the red arrows.
+   </h2>
+  </div>
+</div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+<!-- Paper poster -->
+<!-- TODO: Replace with your poster PDF -->
+<!--- --
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+        <h2 class="title is-3" style="text-align: center;">Poster</h2>
+      <iframe  src="static/pdfs/eccv_poster_dady-1.pdf" width="100%" height="550"> </iframe
+      </div>
+    </div>
+  </section>
+-->
+<!--End paper poster -->
+
+<!--Acknowledgments -->
+<section class="section" id="Acknowledgments">
+    <div class="container is-max-desktop content">
+        <h2 class="title is-3" style="text-align: center;">Acknowledgments</h2>
+        <div class="columns is-centered has-text-centered">
+            <p style="text-align: left;">
+                Armand Losfeld is a FRIA grantee and Sarah Dury is a research fellow of the Fonds de la Recherche Scientifique – FNRS, Belgium. This work was supported by the 24 Top-Tier International Global Collaborative Research Program funded by ETRI; the IITP grant funded by the Korean government (MSIT) (RS-2017-II170072); and the Service Public de Wallonie Recherche – Wal4XR by Win4Excellence (2310144), Belgium.
+            </p>
+        </div>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+        <i class="fas fa-copy"></i>
+        <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <!-- TODO -->
+      <pre id="bibtex-code"><code>
+          @inbook{diffdibr_eccv_2026,
+            title={$\partial$DIBR: Differentiable Depth Image-based Rendering for Fast Novel View Synthesis},
+            author={Losfeld, Armand and Dury, Sarah and Lafruit, Gauthier and Teratani, Mehrdad and Bonatto, Daniele},
+            booktitle={Computer Vision – ECCV 2024}, 
+            publisher={Springer Nature}, 
+            year={2026},
+          }
+      </code>
+      </pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
