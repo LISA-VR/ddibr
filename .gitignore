@@ -1,0 +1,17 @@
+build
+.vscode
+__pycache__
+.venv
+.out
+pyEnv
+Data/*/out
+*.html
+*.json
+out/
+.pytest_cache
+*.svg
+*.egg-info
+.ipynb_checkpoints
+external
+Data/ckpt_example
+tmp

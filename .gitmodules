@@ -1,0 +1,9 @@
+[submodule "external/ZoeDepth"]
+	path = external/ZoeDepth
+	url = https://github.com/isl-org/ZoeDepth
+[submodule "external/DepthAnything3"]
+	path = external/DepthAnything3
+	url = https://github.com/ByteDance-Seed/Depth-Anything-3
+[submodule "external/nerfbaselines"]
+	path = external/nerfbaselines
+	url = https://github.com/ArmandLfd/nerfbaselines
