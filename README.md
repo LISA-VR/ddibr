@@ -12,7 +12,7 @@
     <a href="https://orcid.org/0000-0001-6502-5354">Daniele Bonatto</a>
   </p>
   <h3 align="center">ECCV 2026 Poster</h3>
-  <h3 align="center"><a href="https://arxiv.org/abs/2403.14627">Paper</a> | <a href="https://donydchen.github.io/mvsplat/">Project Page</a></h3>
+  <h3 align="center"><a href="https://arxiv.org/">Paper</a> | <a href="https://lisa-vr.github.io/ddibr/">Project Page</a></h3>
     <!-- 
     <ul>
     <li><b href="https://github.com/donydchen/mvsplat360">Update:</b> Fix, etc.</li>
