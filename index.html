@@ -33,21 +33,6 @@
   <meta property="article:tag" content="slang">
   <meta property="article:tag" content="computer vision">
 
-  <!-- Twitter -->
-<!-- <meta name="twitter:card" content="summary_large_image"> --> 
-<!-- <!-- TODO: Replace with your lab/institution Twitter handle --> 
-<!-- <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE"> -->
-<!-- <!-- TODO: Replace with first author's Twitter handle --> 
-<!-- <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE"> -->
-<!-- <!-- TODO: Same as paper title above --> 
-<!-- <meta name="twitter:title" content="PAPER_TITLE"> -->
-<!-- <!-- TODO: Same as description above --> 
-<!-- <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS"> -->
-<!-- <!-- TODO: Same as social preview image above --> 
-<!-- <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png"> -->
-<!-- <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview"> -->
-    
-
   <!-- Academic/Research Specific -->
   <meta name="citation_title" content="&#8706;DIBR: Differentiable Depth Image-based Rendering for Fast Novel View Synthesis">
   <meta name="citation_author" content="Losfeld, Armand">
@@ -57,7 +42,7 @@
   <meta name="citation_author" content="Bonatto, Daniele">
   <meta name="citation_publication_date" content="2026">
   <meta name="citation_conference_title" content="ECCV 2026">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf"> <!-- TODO -->
+  <meta name="citation_pdf_url" content="https://dipot.ulb.ac.be/dspace/bitstream/2013/408743/3/ECCV_2026_dDIBR_ARMAND_LOSFELD.pdf">
   
   <!-- Additional SEO -->
   <meta name="theme-color" content="#2563eb">
@@ -109,7 +94,6 @@
   <script defer src="static/js/index.js"></script>
   
   <!-- Structured Data for Academic Papers -->
-  <!-- TODO: check info -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -161,10 +145,10 @@
     "datePublished": "2026-06-27",
     "publisher": {
       "@type": "Organization",
-      "name": "ECCV"
+      "name": "Springer Nature (ECCV)"
     },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE", 
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "url": "https://lisa-vr.github.io/ddibr/", 
+    "image": "https://lisa-vr.github.io/ddibr/static/images/social_preview.png",
     "keywords": [
       "Differentiable Rendering",
       "Depth Image based rendering",
@@ -175,12 +159,12 @@
       "computer vision",
     ],
     "abstract": "Modern Novel View Synthesis (NVS), such as 3D Gaussian Splatting (3DGS), introduces scene representations based on new parametrized primitives. These primitives are optimized through inverse-rendering optimization from color gradients, possibly with a depth prior. However, they fail to preserve geometric consistency and connectivity of the scene during the training phase. Furthermore, standard computer graphics (CG) pipelines do not easily handle these new primitives, thereby limiting rendering performance and integration into consumer applications. We propose a differentiable framework for Depth Image‑Based Rendering (DIBR) using triangle primitives. Our method integrates seamlessly into traditional CG pipelines while remaining fully optimizable within modern NVS frameworks. Moreover, our primitives ensure geometric consistency and connectivity. Colors and depths are jointly optimized following a coarse-to-fine strategy. We compare our renderer to 3DGS, 2DGS, and Triangle Splatting across two forward‑facing datasets. Although our approach yields slightly lower NVS quality (up to -3 dB), it achieves a 2x speed‑up in rendering time (277 FPS) on a consumer-grade GPU, demonstrating its suitability for real‑time or resource‑constrained applications. ",
-    "citation": "@inbook{diffdibr_eccv_2026,title={$\partial$DIBR: Differentiable Depth Image-based Rendering for Fast Novel View Synthesis}\nauthor={Losfeld, Armand and Dury, Sarah and Lafruit, Gauthier and Teratani, Mehrdad and Bonatto, Daniele}\nbooktitle={Computer Vision – ECCV 2024},\npublisher={Springer Nature},\nyear={2026},\n}",
+    "citation": "@inbook{diffdibr_eccv_2026,title={$\partial$DIBR: Differentiable Depth Image-based Rendering for Fast Novel View Synthesis}\nauthor={Losfeld, Armand and Dury, Sarah and Lafruit, Gauthier and Teratani, Mehrdad and Bonatto, Daniele}\nbooktitle={Computer Vision – ECCV 2026},\npublisher={Springer Nature},\nyear={2026},\n}",
     "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "license": "https://www.gnu.org/licenses/agpl-3.0.html",
     "mainEntity": {
       "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+      "@id": "https://lisa-vr.github.io/ddibr/"
     },
     "about": [
       {
@@ -204,14 +188,13 @@
   </script>
   
   <!-- Website/Organization Structured Data -->
-  <!-- TODO domain + lab github -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Laboratory of Image Synthesis and Analysis (LISA), Université Libre de Bruxelles (ULB)",
     "url": "https://lisa.polytech.ulb.be/",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "logo": "https://lisa-vr.github.io/ddibr/static/images/favicon-ulb.png",
     "sameAs": [
       "https://github.com/ArmandLfd",
       "https://github.com/LISA-VR",
@@ -246,7 +229,6 @@
         </button>
       </div>
       <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
         <a href="https://ieeexplore.ieee.org/document/11489163" class="work-item" target="_blank">
           <div class="work-info">
             <h5>Failing to Reflect Reality: Gaussian Splatting’s Collapse on Non-Lambertian Surfaces</h5>
@@ -297,18 +279,15 @@
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
                     <span class="author-block">&dagger; Laboratory of Image Synthesis and Analysis (LISA), Université Libre de Bruxelles (ULB)
                         <br>* Fujii Laboratory, Nagoya University
                         <br>ECCV 2026</span>
                     <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
                   </div>
-
-                  <!-- TODO: add difuion link to MOBILE pdf format-->
                   <div class="column has-text-centered">
                     <div class="publication-links">
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        <a href="https://dipot.ulb.ac.be/dspace/bitstream/2013/408743/3/ECCV_2026_dDIBR_ARMAND_LOSFELD.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -318,7 +297,7 @@
                     </span>
                     
                     <span class="link-block">
-                      <a href="static/pdfs/suppl-mat.pdf" target="_blank"
+                      <a href="https://dipot.ulb.ac.be/dspace/bitstream/2013/408743/4/ECCV_2026_dDIBR_SUPPL_MAT_ARMAND_LOSFELD.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="fas fa-file-pdf"></i>
@@ -327,7 +306,6 @@
                     </a>
                   </span>
 
-                  <!-- TODO: Replace with your GitHub repository URL -->
                   <span class="link-block">
                     <a href="https://github.com/LISA-VR/ddibr" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
@@ -362,7 +340,6 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
       
       <video poster="" id="tree" autoplay controls muted loop width="49%" preload="metadata" style="float: left top;">
         <source src="static/videos/ddibr_rendering_tools.webm" type="video/mp4">
@@ -514,7 +491,6 @@
 
   <div id="results-carousel" class="carousel results-carousel">
    <div class="item">
-    <!-- TODO: Replace with your research result images -->
     <img src="static/images/dseasoning.png" alt="Third research result visualization" loading="lazy"/>
     <h2 class="subtitle has-text-centered" style="font-size: 20pt!important; color: #1e293b; font-family: 'Inter', sans-serif; word-spacing: 10cm;">
         GT 3DGS &#8706;DIBR
@@ -628,7 +604,7 @@
           @inbook{diffdibr_eccv_2026,
             title={$\partial$DIBR: Differentiable Depth Image-based Rendering for Fast Novel View Synthesis},
             author={Losfeld, Armand and Dury, Sarah and Lafruit, Gauthier and Teratani, Mehrdad and Bonatto, Daniele},
-            booktitle={Computer Vision – ECCV 2024}, 
+            booktitle={Computer Vision – ECCV 2026}, 
             publisher={Springer Nature}, 
             year={2026},
           }
