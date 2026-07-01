@@ -374,7 +374,7 @@ We also extend our sincere gratitude to the developers and maintainers of the fr
 
 ---
 
-## 12. License
+## License
 
 All original source code ([`src/`](src/), [`scripts/`](scripts/)) is licensed under [**AGPL-3.0-or-later**](LICENSE). Please also read the [**copyright notice file**](NOTICE).
 
@@ -384,6 +384,6 @@ All images ([`static/images/`](static/images/)) are licensed under [**CC BY 4.0*
 
 ---
 
-## 13. Dataset Licenses
+## Dataset Licenses
 - **LLFF** is under GPL-3.0 license 
 - **Shiny (NeX)** is under MIT License
