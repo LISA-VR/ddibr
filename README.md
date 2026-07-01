@@ -375,7 +375,12 @@ We also extend our sincere gratitude to the developers and maintainers of the fr
 ---
 
 ## 12. License
-Our project is under [**AGPL-3.0-or-later**](LICENSE). Please also read the [**copyright notice file**](NOTICE).
+
+All original source code ([`src/`](src/), [`scripts/`](scripts/)) is licensed under [**AGPL-3.0-or-later**](LICENSE). Please also read the [**copyright notice file**](NOTICE).
+
+All web design of the github page ([`index.html`](index.html), [`static/js`](static/js), [`static/css`](static/css)) is licensed under [**CC BY-SA 4.0**](https://creativecommons.org/licenses/by-sa/4.0/), adapted from [eliahuhorwitz/Academic-project-page-template](https://github.com/eliahuhorwitz/Academic-project-page-template).
+
+All images ([`static/images/`](static/images/)) are licensed under [**CC BY 4.0**](https://creativecommons.org/licenses/by/4.0/). Note: The [ULB](static/images/favicon-ulb.png) logo is a registered trademark. Its inclusion in this repository does not grant a license under CC BY 4.0 or CC BY-SA 4.0. It may not be used or reproduced without explicit permission.
 
 ---
 
